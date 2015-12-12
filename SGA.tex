@@ -1,0 +1,1191 @@
+
+% Default to the notebook output style
+
+
+
+
+% Inherit from the specified cell style.
+
+
+
+
+
+\documentclass{article}
+
+
+
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{fancyhdr} % for header
+    \usepackage{grffile} % extends the file name processing of package graphics
+                         % to support a larger range
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+
+
+
+
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+
+    % define header
+    \pagestyle{fancy}
+
+    \lhead{WLU CP468, December 11 2015}
+    \chead{SGA -- Final Project}
+    \rhead{George Lifchits (100691350)}
+
+
+    % Document parameters
+    \title{SGA}
+
+
+
+
+    % Pygments definitions
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+
+
+
+    \begin{document}
+
+    \title{Simple Genetic Algorithm}
+    \author{George Lifchits (100691350) \\
+    CP468: Artificial Intelligence}
+
+
+    \maketitle
+
+
+
+
+    \section{Running this code}\label{running-this-code}
+
+This project is implemented in a Jupyter (a.k.a. IPython) notebook, with
+code written in Python 3.
+
+Jupyter allows the interspersal of simple formatted text and executable
+blocks of code with visible output. It also offers good integration with
+matplotlib, a Python plotting library, such that rendered graphs and
+plots are output directly in the notebook.
+
+More information on Jupyter can be found on their website:
+\url{https://jupyter.org/}, and instructions on installing it can be
+found here:
+\url{http://jupyter.readthedocs.org/en/latest/install.html\#new-to-python-and-jupyter}.
+
+Once the Jupyter environment is installed and configured with a Python 3
+kernel, the only requirement to run this notebook interactively is to
+start a Jupyter server instance in the same folder as the
+\texttt{SGA.ipynb} file (on Mac, I do this by opening a bash shell and
+typing \texttt{jupyter\ notebook}), and open the notebook in the browser
+window that opens.
+
+    \section{SGA Implementation}\label{sga-implementation}
+
+We start off with some imports for plotting graphs.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{import} \PY{n+nn}{matplotlib}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{o}{\PYZpc{}}\PY{k}{config} InlineBackend.figure\PYZus{}formats = [\PYZsq{}png\PYZsq{}]
+        \PY{n}{matplotlib}\PY{o}{.}\PY{n}{rcParams}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{figure.figsize}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{p}{(}\PY{l+m+mf}{18.0}\PY{p}{,} \PY{l+m+mf}{8.0}\PY{p}{)}
+\end{Verbatim}
+
+    SGA has two important entities which have to be modelled in a code implementation: the
+    \emph{chromosome} and the \emph{population}.  Here I implemented the chromosome as a
+    Python string, where each character is either 0 or 1. Populations are a Python list of
+    strings.  The following are helpers, including methods used to initialize the
+    population.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{random}
+
+
+        \PY{k}{def} \PY{n+nf}{coin}\PY{p}{(}\PY{n}{prob}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Performs a biased coin toss.}
+        \PY{l+s+sd}{    :param prob: [0 ≤ float ≤ 1]}
+        \PY{l+s+sd}{    :returns: [bool] True with probability `prob` and otherwise False}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c}{\PYZsh{} random.random() yields a float between 0 and 1}
+            \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{prob}
+
+
+        \PY{k}{def} \PY{n+nf}{random\PYZus{}string}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    :param length: [int] length of random string}
+        \PY{l+s+sd}{    :returns: [string] random string consisting of \PYZdq{}0\PYZdq{} and \PYZdq{}1\PYZdq{}}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}} \PY{k}{if} \PY{n}{coin}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{)} \PY{k}{else} \PY{l+s}{\PYZsq{}}\PY{l+s}{1}\PY{l+s}{\PYZsq{}} \PY{k}{for} \PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{length}\PY{p}{)}\PY{p}{)}
+
+
+        \PY{k}{def} \PY{n+nf}{generate\PYZus{}random\PYZus{}population}\PY{p}{(}\PY{n}{number}\PY{p}{,} \PY{n}{length}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    This function is used to generate the first population.}
+        \PY{l+s+sd}{    This implementation ensure that chromosomes in the initial population}
+        \PY{l+s+sd}{    are uniformly pseudo\PYZhy{}random!}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    :param number: [int] number of strings to return}
+        \PY{l+s+sd}{    :param length: [int] length of the strings to return}
+        \PY{l+s+sd}{    :returns: List[str] list of random binary strings}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{random\PYZus{}string}\PY{p}{(}\PY{n}{length}\PY{p}{)} \PY{k}{for} \PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{number}\PY{p}{)}\PY{p}{]}
+\end{Verbatim}
+
+    \subsection{Reproduction}\label{reproduction}
+
+One of the main three operators in SGA. It takes a population of
+chromosomes and generates a new population.
+
+\begin{itemize}
+\tightlist
+\item
+  Each chromosome in the population is assigned a weight, based off the
+  chromosome's \textbf{fitness}
+\item
+  The weights define how likely the member is going to be picked for the
+  next population
+\item
+  This is called \emph{biased roulette} selection
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{MIN} \PY{o}{=} \PY{l+m+mi}{0}
+        \PY{n}{MAX} \PY{o}{=} \PY{l+m+mi}{1}
+
+
+        \PY{k}{def} \PY{n+nf}{reproduction}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{fitness\PYZus{}func}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MAX}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Produces a new population from biased roulette reproduction of the }
+        \PY{l+s+sd}{    given population.}
+        \PY{l+s+sd}{    :param population: [List[str]]}
+        \PY{l+s+sd}{    :param fitness\PYZus{}func: [function: number \PYZgt{} 0]}
+        \PY{l+s+sd}{    :param min\PYZus{}or\PYZus{}max: \PYZob{}MIN, MAX\PYZcb{}}
+        \PY{l+s+sd}{    :returns: [List[str]]}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{c}{\PYZsh{} First, we define the probability density (roulette weights) for each}
+            \PY{c}{\PYZsh{} member in our given population. }
+
+            \PY{n}{min\PYZus{}fitness} \PY{o}{=} \PY{n+nb}{min}\PY{p}{(}\PY{n}{fitness\PYZus{}func}\PY{p}{(}\PY{n}{m}\PY{p}{)} \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{population}\PY{p}{)}
+
+            \PY{k}{def} \PY{n+nf}{compute\PYZus{}weight}\PY{p}{(}\PY{n}{m}\PY{p}{)}\PY{p}{:}
+                \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{        Subroutine which computes the weight of the biased roulette, which }
+        \PY{l+s+sd}{        is agnostic of the fitness function. In particular, it will invert}
+        \PY{l+s+sd}{        the fitness value if we are seeking a minimum. Member `m` has weight}
+        \PY{l+s+sd}{        that is commensurate with its distance from the member with lowest}
+        \PY{l+s+sd}{        fitness in the population.}
+        \PY{l+s+sd}{        :param m: [str] member}
+        \PY{l+s+sd}{        \PYZdq{}\PYZdq{}\PYZdq{}}
+                \PY{n}{fitness} \PY{o}{=} \PY{n}{fitness\PYZus{}func}\PY{p}{(}\PY{n}{m}\PY{p}{)}
+
+                \PY{k}{if} \PY{n}{min\PYZus{}or\PYZus{}max} \PY{o}{==} \PY{n}{MAX}\PY{p}{:}
+                    \PY{k}{return} \PY{n}{fitness} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}fitness} \PY{o}{+} \PY{l+m+mi}{1}
+
+                \PY{k}{elif} \PY{n}{min\PYZus{}or\PYZus{}max} \PY{o}{==} \PY{n}{MIN}\PY{p}{:}
+                    \PY{k}{return} \PY{l+m+mi}{1} \PY{o}{/} \PY{p}{(}\PY{n}{fitness} \PY{o}{\PYZhy{}} \PY{n}{min\PYZus{}fitness} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} Here we normalize the weights to be proportions of the total weighting}
+            \PY{n}{weights} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{m}\PY{p}{,} \PY{n}{compute\PYZus{}weight}\PY{p}{(}\PY{n}{m}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{population}\PY{p}{]}
+            \PY{n}{total\PYZus{}weights} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{w} \PY{k}{for} \PY{n}{m}\PY{p}{,} \PY{n}{w} \PY{o+ow}{in} \PY{n}{weights}\PY{p}{)}
+            \PY{n}{pdf} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{m}\PY{p}{,} \PY{n}{w}\PY{o}{/}\PY{n}{total\PYZus{}weights}\PY{p}{)} \PY{k}{for} \PY{n}{m}\PY{p}{,} \PY{n}{w} \PY{o+ow}{in} \PY{n}{weights}\PY{p}{]}
+
+            \PY{c}{\PYZsh{} Now we pick members for the new population.}
+            \PY{c}{\PYZsh{} We pick the same number of members as the provided population.}
+            \PY{n}{new\PYZus{}population} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{population}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{rand} \PY{o}{=} \PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)}
+                \PY{n}{cumul} \PY{o}{=} \PY{l+m+mi}{0}
+                \PY{k}{for} \PY{n}{member}\PY{p}{,} \PY{n}{end\PYZus{}interval} \PY{o+ow}{in} \PY{n}{pdf}\PY{p}{:}
+                    \PY{n}{cumul} \PY{o}{+}\PY{o}{=} \PY{n}{end\PYZus{}interval}
+                    \PY{k}{if} \PY{n}{rand} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{cumul}\PY{p}{:}
+                        \PY{n}{new\PYZus{}population}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{member}\PY{p}{)}
+                        \PY{k}{break} \PY{c}{\PYZsh{} generate next member}
+
+            \PY{k}{return} \PY{n}{new\PYZus{}population}
+\end{Verbatim}
+
+    \subsection{Crossover}\label{crossover}
+
+\begin{itemize}
+\tightlist
+\item
+  Take pairs from the population
+\item
+  For each pair in the population, probability \(P_c\) is the chance
+  that any pair will be crossed over
+\end{itemize}
+
+What is cross over?
+
+\begin{itemize}
+\tightlist
+\item
+  Pick a random index, split the strings into ``head'' and ``tail''
+\item
+  Take the head of the first and tail of the second, and vice versa
+\end{itemize}
+
+\textbf{Example:}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{aaabbb} and \texttt{xxxyyy}
+\end{itemize}
+
+Crossover at randomly chosen index 2:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{aaa\textbar{}yyy} and \texttt{xxx\textbar{}bbb}
+\end{itemize}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{crossover}\PY{p}{(}\PY{n}{string1}\PY{p}{,} \PY{n}{string2}\PY{p}{,} \PY{n}{index}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} Performs crossover on two strings at given index \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{head1}\PY{p}{,} \PY{n}{tail1} \PY{o}{=} \PY{n}{string1}\PY{p}{[}\PY{p}{:}\PY{n}{index}\PY{p}{]}\PY{p}{,} \PY{n}{string1}\PY{p}{[}\PY{n}{index}\PY{p}{:}\PY{p}{]}
+            \PY{n}{head2}\PY{p}{,} \PY{n}{tail2} \PY{o}{=} \PY{n}{string2}\PY{p}{[}\PY{p}{:}\PY{n}{index}\PY{p}{]}\PY{p}{,} \PY{n}{string2}\PY{p}{[}\PY{n}{index}\PY{p}{:}\PY{p}{]}
+            \PY{k}{return} \PY{n}{head1}\PY{o}{+}\PY{n}{tail2}\PY{p}{,} \PY{n}{head2}\PY{o}{+}\PY{n}{tail1}
+
+
+        \PY{k}{def} \PY{n+nf}{population\PYZus{}crossover}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{crossover\PYZus{}probability}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Performs crossover on an entire population.}
+        \PY{l+s+sd}{    :param population: List[str]}
+        \PY{l+s+sd}{    :param crossover\PYZus{}probability: [0 ≤ float ≤ 1] }
+        \PY{l+s+sd}{        chance that any pair will be crossed over}
+        \PY{l+s+sd}{    :returns: List[str] }
+        \PY{l+s+sd}{        new population with possibly some members crossed over}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{pairs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{n}{new\PYZus{}population} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{while} \PY{n+nb}{len}\PY{p}{(}\PY{n}{population}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{n}{pairs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{p}{(}\PY{n}{population}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{population}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+            \PY{k}{if} \PY{n+nb}{len}\PY{p}{(}\PY{n}{population}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+                \PY{n}{new\PYZus{}population}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{population}\PY{o}{.}\PY{n}{pop}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+            \PY{k}{for} \PY{n}{s1}\PY{p}{,} \PY{n}{s2} \PY{o+ow}{in} \PY{n}{pairs}\PY{p}{:}
+                \PY{k}{if} \PY{o+ow}{not} \PY{n}{coin}\PY{p}{(}\PY{n}{crossover\PYZus{}probability}\PY{p}{)}\PY{p}{:}
+                    \PY{c}{\PYZsh{} don\PYZsq{}t perform crossover, just add the original pair}
+                    \PY{n}{new\PYZus{}population} \PY{o}{+}\PY{o}{=} \PY{p}{[}\PY{n}{s1}\PY{p}{,} \PY{n}{s2}\PY{p}{]}
+                    \PY{k}{continue}
+                \PY{n}{idx} \PY{o}{=} \PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{s1}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{c}{\PYZsh{} select crossover index}
+                \PY{n}{new\PYZus{}s1}\PY{p}{,} \PY{n}{new\PYZus{}s2} \PY{o}{=} \PY{n}{crossover}\PY{p}{(}\PY{n}{s1}\PY{p}{,} \PY{n}{s2}\PY{p}{,} \PY{n}{idx}\PY{p}{)}
+                \PY{n}{new\PYZus{}population}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{new\PYZus{}s1}\PY{p}{)}
+                \PY{n}{new\PYZus{}population}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{new\PYZus{}s2}\PY{p}{)}
+            \PY{k}{return} \PY{n}{new\PYZus{}population}
+\end{Verbatim}
+
+    \subsection{Mutation}\label{mutation}
+
+Creates perturbations in the population to find some chromosomes that
+are not available from the crossover operator.
+
+For every chromosome in the population, for every bit in the chromosome,
+the bit will be flipped with a probability \(P_m\)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{mutation}\PY{p}{(}\PY{n}{string}\PY{p}{,} \PY{n}{probability}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    :param string: the binary string to mutate}
+        \PY{l+s+sd}{    :param probability: [0 ≤ float ≤ 1] }
+        \PY{l+s+sd}{        the probability of any character being flipped}
+        \PY{l+s+sd}{    :returns: [str] }
+        \PY{l+s+sd}{        just the input string, possibly with some bits flipped}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{flipped} \PY{o}{=} \PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{l+s}{\PYZsq{}}\PY{l+s}{1}\PY{l+s}{\PYZsq{}} \PY{k}{if} \PY{n}{x} \PY{o+ow}{is} \PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}} \PY{k}{else} \PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}}
+            \PY{n}{chars} \PY{o}{=} \PY{p}{(}\PY{n}{flipped}\PY{p}{(}\PY{n}{char}\PY{p}{)} \PY{k}{if} \PY{n}{coin}\PY{p}{(}\PY{n}{probability}\PY{p}{)} \PY{k}{else} \PY{n}{char} \PY{k}{for} \PY{n}{char} \PY{o+ow}{in} \PY{n}{string}\PY{p}{)}
+            \PY{k}{return} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZsq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{chars}\PY{p}{)}
+
+        \PY{k}{def} \PY{n+nf}{mutate\PYZus{}population}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{prob}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    :param population: [List[str]] }
+        \PY{l+s+sd}{        population of binary strings}
+        \PY{l+s+sd}{    :returns: [List[str]] }
+        \PY{l+s+sd}{        just the input population with some members possibly mutated}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{mutation}\PY{p}{(}\PY{n}{m}\PY{p}{,} \PY{n}{prob}\PY{p}{)} \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{population}\PY{p}{]}
+\end{Verbatim}
+
+    \subsection{Main loop}\label{main-loop}
+
+The main loop of SGA is very small. It runs for any number of
+\emph{eras} (provided as parameter). In each era, we:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  perform \textbf{reproduction} to create a new population from the old
+  population
+\item
+  perform \textbf{crossover} on the population
+\item
+  perform \textbf{mutation} on the population
+\end{enumerate}
+
+We save each population so that we can plot how the populations change
+after each era.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{run\PYZus{}genetic\PYZus{}algorithm}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,}
+                                  \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MAX}\PY{p}{,} \PY{n}{num\PYZus{}eras}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,}
+                                  \PY{n}{population\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{,} \PY{n}{chromosome\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{12}\PY{p}{,}
+                                  \PY{n}{crossover\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.4}\PY{p}{,}\PY{n}{mutation\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.005}\PY{p}{)}\PY{p}{:}
+
+            \PY{c}{\PYZsh{} define fitness function (decode string, then feed to the OF)}
+            \PY{n}{fitness} \PY{o}{=} \PY{k}{lambda} \PY{n}{coding}\PY{p}{:} \PY{n}{obj\PYZus{}fun}\PY{p}{(}\PY{o}{*}\PY{n}{decoder}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} initialize population}
+            \PY{n}{population} \PY{o}{=} \PY{n}{generate\PYZus{}random\PYZus{}population}\PY{p}{(}\PY{n}{number}\PY{o}{=}\PY{n}{population\PYZus{}size}\PY{p}{,}
+                                                    \PY{n}{length}\PY{o}{=}\PY{n}{chromosome\PYZus{}length}\PY{p}{)}
+            \PY{c}{\PYZsh{} data collection}
+            \PY{n}{populations} \PY{o}{=} \PY{p}{[}\PY{n}{population}\PY{p}{]} \PY{c}{\PYZsh{} initialize with first population}
+
+            \PY{c}{\PYZsh{} SGA loop}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}eras}\PY{p}{)}\PY{p}{:}
+                \PY{n}{population} \PY{o}{=} \PY{n}{reproduction}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{fitness}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{p}{)}
+                \PY{n}{population} \PY{o}{=} \PY{n}{population\PYZus{}crossover}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{crossover\PYZus{}probability}\PY{p}{)}
+                \PY{n}{population} \PY{o}{=} \PY{n}{mutate\PYZus{}population}\PY{p}{(}\PY{n}{population}\PY{p}{,} \PY{n}{mutation\PYZus{}probability}\PY{p}{)}
+                \PY{n}{populations}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{population}\PY{p}{)} \PY{c}{\PYZsh{} data collection}
+
+            \PY{k}{return} \PY{n}{populations}
+\end{Verbatim}
+
+    \section{Testing the SGA
+implementation}\label{testing-the-sga-implementation}
+
+\subsection{Benchmark objective
+functions}\label{benchmark-objective-functions}
+
+The benchmark objective functions are defined here. They are coding
+agnostic, so we focus on delivering an accurate OF implementation and
+worry about how to provide its parameters in the accompanying decoder
+function (see below).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{dejong\PYZus{}OF}\PY{p}{(}\PY{o}{*}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{xi}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{xi} \PY{o+ow}{in} \PY{n}{x}\PY{p}{)}
+
+        \PY{k}{def} \PY{n+nf}{rosenbrock\PYZus{}OF}\PY{p}{(}\PY{o}{*}\PY{n}{x}\PY{p}{)}\PY{p}{:}
+            \PY{n}{irange} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+            \PY{k}{return} \PY{n+nb}{sum}\PY{p}{(}\PY{l+m+mi}{100} \PY{o}{*} \PY{p}{(}\PY{n}{x}\PY{p}{[}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{x}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{\PYZhy{}}\PY{n}{x}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{irange}\PY{p}{)}
+
+        \PY{k}{def} \PY{n+nf}{himmelblau\PYZus{}OF}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{p}{(}\PY{n}{x}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{n}{y} \PY{o}{\PYZhy{}} \PY{l+m+mi}{11}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{+} \PY{p}{(}\PY{n}{x} \PY{o}{+} \PY{n}{y}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{l+m+mi}{7}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+
+        \PY{k}{def} \PY{n+nf}{esf}\PY{p}{(}\PY{o}{*}\PY{n}{a}\PY{p}{)}\PY{p}{:}
+            \PY{n}{nov} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{c}{\PYZsh{} number of variables = length of input vector}
+            \PY{n}{terms} \PY{o}{=} \PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{o}{*}\PY{n}{a}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{nov}\PY{p}{)} \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{nov}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n+nb}{abs}\PY{p}{(}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{terms}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection{Decoders}\label{decoders}
+
+As mentioned in the previous section (``Benchmarks''), the objective
+functions operate with straightforward parameters. Here we implement
+methods that take a binary string and ``decode'' it. These decoder
+functions yield parameters which are fed directly into the objective
+function implementations above.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k}{def} \PY{n+nf}{split\PYZus{}string\PYZus{}into\PYZus{}chunks}\PY{p}{(}\PY{n}{string}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Helper function.}
+        \PY{l+s+sd}{    :param string: [str]}
+        \PY{l+s+sd}{    :param n: [int \PYZgt{} 0] chunk size}
+        \PY{l+s+sd}{    :returns: List[str] the entire string split into sequential chunks of the }
+        \PY{l+s+sd}{        given size (plus the remainder)}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    example:}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    \PYZgt{}\PYZgt{}\PYZgt{} split\PYZus{}string\PYZus{}into\PYZus{}chunks(\PYZsq{}12345678\PYZsq{}, 3)}
+        \PY{l+s+sd}{    [\PYZsq{}123\PYZsq{}, \PYZsq{}456\PYZsq{}, \PYZsq{}78\PYZsq{}]}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    \PYZgt{}\PYZgt{}\PYZgt{} split\PYZus{}string\PYZus{}into\PYZus{}chunks(\PYZsq{}12345678\PYZsq{}, 4)}
+        \PY{l+s+sd}{    [\PYZsq{}1234\PYZsq{}, \PYZsq{}5678\PYZsq{}]}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{k}{return} \PY{p}{[}\PY{n}{string}\PY{p}{[}\PY{n}{i}\PY{p}{:}\PY{n}{i}\PY{o}{+}\PY{n}{n}\PY{p}{]} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{string}\PY{p}{)}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{]}
+
+        \PY{k}{def} \PY{n+nf}{dejong\PYZus{}decoder}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{p}{:}
+            \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{4}
+            \PY{n}{bits\PYZus{}list} \PY{o}{=} \PY{n}{split\PYZus{}string\PYZus{}into\PYZus{}chunks}\PY{p}{(}\PY{n}{coding}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+            \PY{c}{\PYZsh{} take first bit as the sign, and the remaining bits as integers}
+            \PY{n}{signs\PYZus{}nums} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1} \PY{k}{if} \PY{n}{bits}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}} \PY{k}{else} \PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{bits}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                          \PY{k}{for} \PY{n}{bits} \PY{o+ow}{in} \PY{n}{bits\PYZus{}list}\PY{p}{]}
+            \PY{c}{\PYZsh{} use modulo to ensure that the numbers fall within the require interval:}
+            \PY{c}{\PYZsh{}   \PYZhy{}5.12 ≤ x ≤ 5.12}
+            \PY{n}{xlist} \PY{o}{=} \PY{p}{[}\PY{n}{sign} \PY{o}{*} \PY{p}{(}\PY{n}{num} \PY{o}{\PYZpc{}} \PY{l+m+mf}{5.12}\PY{p}{)} \PY{k}{for} \PY{n}{sign}\PY{p}{,} \PY{n}{num} \PY{o+ow}{in} \PY{n}{signs\PYZus{}nums}\PY{p}{]}
+            \PY{k}{return} \PY{n}{xlist}
+
+        \PY{k}{def} \PY{n+nf}{rosenbrock\PYZus{}decoder}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{p}{:}
+            \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{3}
+            \PY{n}{bits\PYZus{}list} \PY{o}{=} \PY{n}{split\PYZus{}string\PYZus{}into\PYZus{}chunks}\PY{p}{(}\PY{n}{coding}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+            \PY{c}{\PYZsh{} take first bit as the sign, and the remaining bits as integers}
+            \PY{n}{signs\PYZus{}nums} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1} \PY{k}{if} \PY{n}{bits}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}} \PY{k}{else} \PY{l+m+mi}{1}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{bits}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+                          \PY{k}{for} \PY{n}{bits} \PY{o+ow}{in} \PY{n}{bits\PYZus{}list}\PY{p}{]}
+            \PY{c}{\PYZsh{} use modulo to ensure that the numbers fall within the require interval:}
+            \PY{c}{\PYZsh{}   \PYZhy{}2.048 ≤ x ≤ 2.048}
+            \PY{n}{x} \PY{o}{=} \PY{p}{[}\PY{n}{sign} \PY{o}{*} \PY{p}{(}\PY{n}{num} \PY{o}{\PYZpc{}} \PY{l+m+mf}{2.048}\PY{p}{)} \PY{k}{for} \PY{n}{sign}\PY{p}{,} \PY{n}{num} \PY{o+ow}{in} \PY{n}{signs\PYZus{}nums}\PY{p}{]}
+            \PY{k}{return} \PY{n}{x}
+
+        \PY{k}{def} \PY{n+nf}{num\PYZus{}in\PYZus{}interval}\PY{p}{(}\PY{n}{lo}\PY{p}{,} \PY{n}{hi}\PY{p}{,} \PY{n}{mult}\PY{p}{,} \PY{n}{steps}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+        \PY{l+s+sd}{    Helper function that takes simple parameters to deterministically}
+        \PY{l+s+sd}{    yield a floating\PYZhy{}point number in a given interval.}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    ex. mult = 6, steps = 10}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{     |\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}|\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}+\PYZhy{}\PYZhy{}\PYZhy{}|}
+        \PY{l+s+sd}{    lo                      mult             hi}
+        \PY{l+s+sd}{    }
+        \PY{l+s+sd}{    if low = \PYZhy{}10 and hi = 10, then the result will be }
+        \PY{l+s+sd}{      = \PYZhy{}10 + 6*(20/10) }
+        \PY{l+s+sd}{      = \PYZhy{}10 + 12}
+        \PY{l+s+sd}{      = 2}
+
+        \PY{l+s+sd}{    :param lo: [number] low bound of interval}
+        \PY{l+s+sd}{    :param hi: [number] high bound of interval}
+        \PY{l+s+sd}{    :param mult: [number ≤ divisor] }
+        \PY{l+s+sd}{    :param steps: [int] the number of steps in the interval}
+        \PY{l+s+sd}{    :returns: [float] a number between `lo` and `hi`}
+        \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+            \PY{n}{step\PYZus{}size} \PY{o}{=} \PY{p}{(}\PY{n}{hi} \PY{o}{\PYZhy{}} \PY{n}{lo}\PY{p}{)}\PY{o}{/}\PY{n}{steps}
+            \PY{k}{return} \PY{n}{lo} \PY{o}{+} \PY{n}{mult}\PY{o}{*}\PY{n}{step\PYZus{}size}
+
+        \PY{k}{def} \PY{n+nf}{himmelblau\PYZus{}decoder}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{p}{:}
+            \PY{n}{mid} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+            \PY{c}{\PYZsh{} split string into x param and y param}
+            \PY{n}{binx}\PY{p}{,} \PY{n}{biny} \PY{o}{=} \PY{n}{coding}\PY{p}{[}\PY{p}{:}\PY{n}{mid}\PY{p}{]}\PY{p}{,} \PY{n}{coding}\PY{p}{[}\PY{n}{mid}\PY{p}{:}\PY{p}{]}
+            \PY{c}{\PYZsh{} use binary x and y as interval multiplier}
+            \PY{n}{xmult}\PY{p}{,} \PY{n}{ymult} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{binx}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{biny}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+            \PY{c}{\PYZsh{} the divisor is the highest possible value x or y could be}
+            \PY{c}{\PYZsh{} which is 2**\PYZob{}length of binary string encoding x or y\PYZcb{}}
+            \PY{n}{x} \PY{o}{=} \PY{n}{num\PYZus{}in\PYZus{}interval}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{n}{xmult}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{binx}\PY{p}{)}\PY{p}{)}
+            \PY{n}{y} \PY{o}{=} \PY{n}{num\PYZus{}in\PYZus{}interval}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{n}{ymult}\PY{p}{,} \PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{biny}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{x}\PY{p}{,} \PY{n}{y}
+
+        \PY{k}{def} \PY{n+nf}{esf\PYZus{}decoder}\PY{p}{(}\PY{n}{coding}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1} \PY{k}{if} \PY{n}{char} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{0}\PY{l+s}{\PYZsq{}} \PY{k}{else} \PY{l+m+mi}{1} \PY{k}{for} \PY{n}{char} \PY{o+ow}{in} \PY{n}{coding}\PY{p}{]}
+\end{Verbatim}
+
+    \subsection{Tools for plotting}\label{tools-for-plotting}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k}{def} \PY{n+nf}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{k}{None}\PY{p}{,} \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{k}{None}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MIN}\PY{p}{,}
+                    \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Genetic Algorithm Evolution}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{legend}\PY{o}{=}\PY{k}{True}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{ga\PYZus{}opts} \PY{o+ow}{is} \PY{k}{None}\PY{p}{:}
+                \PY{n}{ga\PYZus{}opts} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+
+            \PY{n}{ga\PYZus{}opts}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{min\PYZus{}or\PYZus{}max}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{min\PYZus{}or\PYZus{}max}
+            \PY{c}{\PYZsh{} run SGA}
+            \PY{n}{populations} \PY{o}{=} \PY{n}{run\PYZus{}genetic\PYZus{}algorithm}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{o}{*}\PY{o}{*}\PY{n}{ga\PYZus{}opts}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} define fitness func}
+            \PY{n}{fitness} \PY{o}{=} \PY{k}{lambda} \PY{n}{c}\PY{p}{:} \PY{n}{obj\PYZus{}fun}\PY{p}{(}\PY{o}{*}\PY{n}{decoder}\PY{p}{(}\PY{n}{c}\PY{p}{)}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} Find the \PYZdq{}global optimum\PYZdq{} of all the chromosomes we looked at.}
+            \PY{c}{\PYZsh{} A better term for this chromosome is \PYZdq{}best individual\PYZdq{}.}
+            \PY{n}{all\PYZus{}chromosomes} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{c} \PY{k}{for} \PY{n}{pop} \PY{o+ow}{in} \PY{n}{populations} \PY{k}{for} \PY{n}{c} \PY{o+ow}{in} \PY{n}{pop}\PY{p}{\PYZcb{}}
+            \PY{n}{optimizer} \PY{o}{=} \PY{n+nb}{min} \PY{k}{if} \PY{n}{min\PYZus{}or\PYZus{}max} \PY{o}{==} \PY{n}{MIN} \PY{k}{else} \PY{n+nb}{max}
+            \PY{n}{global\PYZus{}optimum} \PY{o}{=} \PY{n}{optimizer}\PY{p}{(}\PY{n}{all\PYZus{}chromosomes}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{n}{fitness}\PY{p}{)}
+            \PY{n}{fittest\PYZus{}fitness} \PY{o}{=} \PY{n}{fitness}\PY{p}{(}\PY{n}{global\PYZus{}optimum}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} Print the optimum to the console}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Global optimum:}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{global\PYZus{}optimum}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Fitness:}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{fittest\PYZus{}fitness}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Decoded:}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{decoder}\PY{p}{(}\PY{n}{global\PYZus{}optimum}\PY{p}{)}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} Start plotting}
+            \PY{c}{\PYZsh{} Define the data ranges}
+            \PY{n}{x\PYZus{}axis} \PY{o}{=} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{populations}\PY{p}{)}\PY{p}{)}
+            \PY{n}{fitnesses} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{n}{fitness}\PY{p}{(}\PY{n}{m}\PY{p}{)} \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{population}\PY{p}{]} \PY{k}{for} \PY{n}{population} \PY{o+ow}{in} \PY{n}{populations}\PY{p}{]}
+            \PY{n}{mins} \PY{o}{=} \PY{p}{[}\PY{n+nb}{min}\PY{p}{(}\PY{n}{f}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{fitnesses}\PY{p}{]}
+            \PY{n}{maxs} \PY{o}{=} \PY{p}{[}\PY{n+nb}{max}\PY{p}{(}\PY{n}{f}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{fitnesses}\PY{p}{]}
+            \PY{n}{avgs} \PY{o}{=} \PY{p}{[}\PY{n+nb}{sum}\PY{p}{(}\PY{n}{f}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{f}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{fitnesses}\PY{p}{]}
+            \PY{n}{optima} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{it}\PY{p}{,} \PY{n}{fittest\PYZus{}fitness}\PY{p}{)} \PY{k}{for} \PY{n}{it}\PY{p}{,} \PY{n}{pop} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{populations}\PY{p}{)}
+                      \PY{k}{if} \PY{n}{fittest\PYZus{}fitness} \PY{o+ow}{in} \PY{n+nb}{map}\PY{p}{(}\PY{n}{fitness}\PY{p}{,} \PY{n}{pop}\PY{p}{)}\PY{p}{]}
+            \PY{n}{x\PYZus{}optima}\PY{p}{,} \PY{n}{y\PYZus{}optima} \PY{o}{=} \PY{n+nb}{zip}\PY{p}{(}\PY{o}{*}\PY{n}{optima}\PY{p}{)} \PY{c}{\PYZsh{} unzip pairs into two sequences}
+
+            \PY{k}{if} \PY{n}{ax} \PY{o+ow}{is} \PY{k}{None}\PY{p}{:} \PY{c}{\PYZsh{} if no plotting axes are provided}
+                \PY{c}{\PYZsh{} define a set of axes}
+                \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} do the plotting}
+            \PY{n}{l\PYZus{}mins}\PY{p}{,} \PY{n}{l\PYZus{}maxs}\PY{p}{,} \PY{n}{l\PYZus{}avgs} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{x\PYZus{}axis}\PY{p}{,} \PY{n}{mins}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{r\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{maxs}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{avgs}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{g\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+            \PY{n}{scatter\PYZus{}ceil} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{x\PYZus{}optima}\PY{p}{,} \PY{n}{y\PYZus{}optima}\PY{p}{,} \PY{n}{c}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{purple}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+
+            \PY{c}{\PYZsh{} create a legend}
+            \PY{k}{if} \PY{n}{legend}\PY{p}{:}
+                \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}
+                    \PY{p}{(}\PY{n}{l\PYZus{}mins}\PY{p}{,} \PY{n}{l\PYZus{}maxs}\PY{p}{,} \PY{n}{l\PYZus{}avgs}\PY{p}{,} \PY{n}{scatter\PYZus{}ceil}\PY{p}{)}\PY{p}{,}
+                    \PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{min pop fitness}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{max pop fitness}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{average pop fitness}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                     \PY{l+s}{\PYZdq{}}\PY{l+s}{occurrences of global optimum}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
+                    \PY{n}{loc}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{upper right}\PY{l+s}{\PYZdq{}}\PY{p}{,}
+                \PY{p}{)}
+
+            \PY{c}{\PYZsh{} set parameters for the axes}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{populations}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{max}\PY{p}{(}\PY{n}{maxs}\PY{p}{)} \PY{o}{*} \PY{l+m+mf}{1.20}\PY{p}{)}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{n}{title}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{era}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+            \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{fitness}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+
+            \PY{k}{return} \PY{n}{ax}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{plot\PYZus{}ga\PYZus{}minmax}\PY{p}{(}\PY{n}{objfun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{k}{None}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{k}{None}\PY{p}{,}
+                            \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Genetic Algorithm}\PY{l+s}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+             \PY{n}{fig}\PY{p}{,} \PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{ax2}\PY{p}{)} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+             \PY{k}{for} \PY{n}{ax}\PY{p}{,} \PY{n}{minimax}\PY{p}{,} \PY{n}{opts} \PY{o+ow}{in} \PY{p}{[}\PY{p}{(}\PY{n}{ax1}\PY{p}{,} \PY{n}{MIN}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{p}{)}\PY{p}{,} \PY{p}{(}\PY{n}{ax2}\PY{p}{,} \PY{n}{MAX}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{p}{)}\PY{p}{]}\PY{p}{:}
+                 \PY{n}{opts} \PY{o}{=} \PY{n}{opts} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}} \PY{c}{\PYZsh{} if none, then use empty dict of options}
+                 \PY{n}{minimax\PYZus{}title} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{minimization}\PY{l+s}{\PYZdq{}} \PY{k}{if} \PY{n}{minimax} \PY{o}{==} \PY{n}{MIN} \PY{k}{else} \PY{l+s}{\PYZdq{}}\PY{l+s}{maximization}\PY{l+s}{\PYZdq{}}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{minimax\PYZus{}title}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{=}\PY{l+s}{\PYZsq{}}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{minimax\PYZus{}title}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+                 \PY{n}{plot\PYZus{}ga}\PY{p}{(}
+                     \PY{n}{objfun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,}
+                     \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{minimax}\PY{p}{,}
+                     \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{opts}\PY{p}{,}
+                     \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}\PYZcb{} (\PYZob{}\PYZcb{})}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{title}\PY{p}{,} \PY{n}{minimax\PYZus{}title}\PY{p}{)}\PY{p}{,}
+                     \PY{n}{legend}\PY{o}{=}\PY{k}{False} \PY{c}{\PYZsh{} no space on the min/max graphs}
+                 \PY{p}{)}
+
+
+         \PY{k}{def} \PY{n+nf}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{n}{nov}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{k}{None}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{k}{None}\PY{p}{)}\PY{p}{:}
+             \PY{c}{\PYZsh{} initialize option dicts as new dictionaries}
+             \PY{n}{min\PYZus{}opts} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+             \PY{n}{max\PYZus{}opts} \PY{o}{=} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}
+             \PY{c}{\PYZsh{} update with parameter option dicts (if provided)}
+             \PY{n}{min\PYZus{}opts}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{min\PYZus{}ga\PYZus{}opts} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+             \PY{n}{max\PYZus{}opts}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{n}{max\PYZus{}ga\PYZus{}opts} \PY{o+ow}{or} \PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+             \PY{c}{\PYZsh{} update with mandatory chromosome length = NOV}
+             \PY{n}{min\PYZus{}opts}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{chromosome\PYZus{}length}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{nov}
+             \PY{n}{max\PYZus{}opts}\PY{p}{[}\PY{l+s}{\PYZsq{}}\PY{l+s}{chromosome\PYZus{}length}\PY{l+s}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{nov}
+             \PY{c}{\PYZsh{} plot!}
+             \PY{n}{plot\PYZus{}ga\PYZus{}minmax}\PY{p}{(}\PY{n}{esf}\PY{p}{,} \PY{n}{esf\PYZus{}decoder}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{ESF (\PYZob{}\PYZcb{} vars)}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nov}\PY{p}{)}\PY{p}{,}
+                            \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{min\PYZus{}opts}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{max\PYZus{}opts}\PY{o}{.}\PY{n}{copy}\PY{p}{(}\PY{p}{)}
+             \PY{p}{)}
+\end{Verbatim}
+
+    \section{Benchmark Performance}\label{benchmark-performance}
+
+    \subsection{DeJong (Sphere) Function}\label{dejong-sphere-function}
+
+Optimal where all values \(x_i = 0\).
+
+This converges pretty quickly so I only use 50 eras of evolution.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{decoder} \PY{o}{=} \PY{n}{dejong\PYZus{}decoder}
+         \PY{n}{obj\PYZus{}fun} \PY{o}{=} \PY{n}{dejong\PYZus{}OF}
+
+         \PY{n}{ga\PYZus{}options} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}
+             \PY{n}{num\PYZus{}eras}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{population\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{chromosome\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{,}
+             \PY{n}{crossover\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.3}\PY{p}{,} \PY{n}{mutation\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.05}
+         \PY{p}{)}
+
+         \PY{n}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MIN}\PY{p}{,}
+                 \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{ga\PYZus{}options}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{DeJong Function (minimization)}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Global optimum: 00000000000000000000
+Fitness: 0.0
+Decoded: [-0.0, -0.0, -0.0, -0.0, -0.0]
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x112cbacc0>
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_23_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsection{Rosenbrock Function}\label{rosenbrock-function}
+
+    Optimal where all values \(x_i = 1\).  This does better when more mutation is allowed and
+    there are a few more eras.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{decoder} \PY{o}{=} \PY{n}{rosenbrock\PYZus{}decoder}
+         \PY{n}{obj\PYZus{}fun} \PY{o}{=} \PY{n}{rosenbrock\PYZus{}OF}
+
+         \PY{n}{ga\PYZus{}options} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}
+             \PY{n}{num\PYZus{}eras}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{population\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{chromosome\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{20}\PY{p}{,}
+             \PY{n}{crossover\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.35}\PY{p}{,} \PY{n}{mutation\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.04}
+         \PY{p}{)}
+
+         \PY{n}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MIN}\PY{p}{,} \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{ga\PYZus{}options}\PY{p}{,}
+                 \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Rosenbrock Function (minimization)}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Global optimum: 10110110110110110111
+Fitness: 0.0
+Decoded: [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x1167b7710>
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_25_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsection{Himmelblau's Function}\label{himmelblaus-function}
+
+It has four identical local minima:
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(3.0, 2.0) = 0.0\),
+\item
+  \(f(-2.805118, 3.131312) = 0.0\),
+\item
+  \(f(-3.779310, -3.283186) = 0.0\),
+\item
+  \(f(3.584428, -1.848126) = 0.0\)
+\end{itemize}
+
+We work with a larger chromosome length to get higher precision real
+numbers.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{decoder} \PY{o}{=} \PY{n}{himmelblau\PYZus{}decoder}
+         \PY{n}{obj\PYZus{}fun} \PY{o}{=} \PY{n}{himmelblau\PYZus{}OF}
+
+         \PY{n}{ga\PYZus{}opts} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}
+             \PY{n}{num\PYZus{}eras}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{population\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,} \PY{n}{chromosome\PYZus{}length}\PY{o}{=}\PY{l+m+mi}{64}\PY{p}{,}
+             \PY{n}{crossover\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.35}\PY{p}{,} \PY{n}{mutation\PYZus{}probability}\PY{o}{=}\PY{l+m+mf}{0.04}
+         \PY{p}{)}
+
+         \PY{n}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{obj\PYZus{}fun}\PY{p}{,} \PY{n}{decoder}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MIN}\PY{p}{,} \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{ga\PYZus{}opts}\PY{p}{,}
+                       \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{Himmelblau}\PY{l+s}{\PYZsq{}}\PY{l+s}{s Function}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Global optimum: 1111001010111101110111110101110101000100110111010000101110101111
+Fitness: 8.294811664014935e-05
+Decoded: (3.585677796974778, -1.8480168897658587)
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11347c748>
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_27_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsection{ESF benchmarks}\label{esf-benchmarks}
+
+Here we test the SGA performance on the elementary symmetric function.
+
+    \subsubsection{Simple brute force checker for minima and
+maxima}\label{simple-brute-force-checker-for-minima-and-maxima}
+
+This small routine generates all binary strings of length \texttt{nov}
+and computes the fitness for all of those strings.
+
+This is a simple way to find the global optima for the ESF benchmarks,
+but it is slow for more than 15 variables or so since there are
+\(2^{\text{nov}}\) binary strings length \texttt{nov}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{def} \PY{n+nf}{solve\PYZus{}esf}\PY{p}{(}\PY{n}{nov}\PY{p}{,} \PY{n}{fitness}\PY{p}{)}\PY{p}{:}
+             \PY{n}{all\PYZus{}binstrings} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZob{}:0\PYZob{}width\PYZcb{}b\PYZcb{}}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{width}\PY{o}{=}\PY{n}{nov}\PY{p}{)} \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{n}{nov}\PY{p}{)}\PY{p}{]}
+             \PY{n}{the\PYZus{}min} \PY{o}{=} \PY{n+nb}{min}\PY{p}{(}\PY{n}{all\PYZus{}binstrings}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{n}{fitness}\PY{p}{)}
+             \PY{n}{the\PYZus{}max} \PY{o}{=} \PY{n+nb}{max}\PY{p}{(}\PY{n}{all\PYZus{}binstrings}\PY{p}{,} \PY{n}{key}\PY{o}{=}\PY{n}{fitness}\PY{p}{)}
+             \PY{k}{return} \PY{p}{(}\PY{n}{the\PYZus{}min}\PY{p}{,} \PY{n}{the\PYZus{}max}\PY{p}{)}
+
+         \PY{k}{def} \PY{n+nf}{solve\PYZus{}and\PYZus{}print}\PY{p}{(}\PY{n}{nov}\PY{p}{)}\PY{p}{:}
+             \PY{n}{fitness} \PY{o}{=} \PY{k}{lambda} \PY{n}{binstring}\PY{p}{:} \PY{n}{esf}\PY{p}{(}\PY{o}{*}\PY{n}{esf\PYZus{}decoder}\PY{p}{(}\PY{n}{binstring}\PY{p}{)}\PY{p}{)}
+             \PY{n}{the\PYZus{}min}\PY{p}{,} \PY{n}{the\PYZus{}max} \PY{o}{=} \PY{n}{solve\PYZus{}esf}\PY{p}{(}\PY{n}{nov}\PY{p}{,} \PY{n}{fitness}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{nov\PYZob{}\PYZcb{}  =\PYZgt{}  min fitness = \PYZob{}:\PYZlt{}4\PYZcb{}  max fitness = \PYZob{}:\PYZlt{}4\PYZcb{}}\PY{l+s}{\PYZsq{}}
+                   \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{nov}\PY{p}{,} \PY{n}{fitness}\PY{p}{(}\PY{n}{the\PYZus{}min}\PY{p}{)}\PY{p}{,} \PY{n}{fitness}\PY{p}{(}\PY{n}{the\PYZus{}max}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \subsubsection{NOV = 12}\label{nov-12}
+
+First we solve ESF of 12 variables with brute force, to confirm
+correctness of the SGA solution.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{solve\PYZus{}and\PYZus{}print}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+nov12  =>  min fitness = 2     max fitness = 66
+    \end{Verbatim}
+
+    \paragraph{NOV = 12, MIN = 2, MAX = 66}\label{nov-12-min-2-max-66}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{opts} \PY{o}{=} \PY{p}{\PYZob{}} \PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{25} \PY{p}{\PYZcb{}}
+         \PY{n}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{opts}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{opts}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ minimization
+ ============
+
+Global optimum: 111001011011
+Fitness: 2
+Decoded: [1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]
+
+ maximization
+ ============
+
+Global optimum: 111111111111
+Fitness: 66
+Decoded: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsubsection{NOV = 14}\label{nov-14}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{solve\PYZus{}and\PYZus{}print}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+nov14  =>  min fitness = 1     max fitness = 91
+    \end{Verbatim}
+
+    \paragraph{NOV = 14, MIN = 1, MAX = 91}\label{nov-14-min-1-max-91}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{l+m+mi}{14}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{25}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{30}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ minimization
+ ============
+
+Global optimum: 11011011100011
+Fitness: 1
+Decoded: [1, 1, -1, 1, 1, -1, 1, 1, 1, -1, -1, -1, 1, 1]
+
+ maximization
+ ============
+
+Global optimum: 11111111111111
+Fitness: 91
+Decoded: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_38_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsubsection{NOV = 27}\label{nov-27}
+
+MIN and MAX not solved with brute force.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{opts} \PY{o}{=} \PY{p}{\PYZob{}} \PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{50} \PY{p}{\PYZcb{}}
+         \PY{n}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{l+m+mi}{27}\PY{p}{,} \PY{n}{min\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{opts}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{n}{opts}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ minimization
+ ============
+
+Global optimum: 101100101011101111110010100
+Fitness: 1
+Decoded: [1, -1, 1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, -1,
+          -1, 1, -1, 1, -1, -1]
+
+ maximization
+ ============
+
+Global optimum: 000000000000000000000000000
+Fitness: 351
+Decoded: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_40_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsubsection{NOV = 35}\label{nov-35}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{l+m+mi}{35}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ minimization
+ ============
+
+Global optimum: 10100100000101011011010011101111111
+Fitness: 5
+Decoded: [1, -1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1, 1,
+          -1, 1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1]
+
+ maximization
+ ============
+
+Global optimum: 00000000000000000000000000000000000
+Fitness: 595
+Decoded: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_42_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsubsection{NOV = 100}\label{nov-100}
+
+Maximization requires more than 100 eras for a good probability of
+converging to 4950, which appears to the be maximum value.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{plot\PYZus{}esf\PYZus{}minmax}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{n}{max\PYZus{}ga\PYZus{}opts}\PY{o}{=}\PY{p}{\PYZob{}} \PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{250} \PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ minimization
+ ============
+
+Global optimum: 000000011111110010100100001001101101000110010110000101001001110101
+                1010001101011111000101010001001100
+Fitness: 0
+Decoded: [-1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1,
+          -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1,
+          1, -1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1, -1, 1, -1, -1, 1, 1, 1, -1, 1, -1,
+          1, 1, -1, 1, -1, -1, -1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, 1, -1, 1,
+          -1, 1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1]
+
+ maximization
+ ============
+
+Global optimum: 000000000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000
+Fitness: 4950
+Decoded: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1]
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_44_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \subsubsection{NOV = 200}\label{nov-200}
+
+All of the above benchmarks take no time at all, 5 seconds in the worst
+case.
+
+From the lower variable numbers, it can be observed that increasing the
+variable size makes maximization problems more difficult. Letting the GA
+run for longer will usually help it, but the number of eras is the
+dominant variable for time required for the SGA to run. For a lot of
+variables, we need to let SGA run for many eras, with a large
+population, to be confident that we've found the maximum.
+
+    \paragraph{NOV = 200, minimization}\label{nov-200-minimization}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{k+kn}{import} \PY{n+nn}{time}
+
+         \PY{n}{ga\PYZus{}opts} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{chromosome\PYZus{}length}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{200}\PY{p}{,} \PY{c}{\PYZsh{} nov = 200,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{50}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+         \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{esf}\PY{p}{,} \PY{n}{esf\PYZus{}decoder}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MIN}\PY{p}{,} \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{ga\PYZus{}opts}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{ESF (NOV=200) (minimization)}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{ESF (NOV=200) minimization took \PYZob{}:.3f\PYZcb{} s}\PY{l+s}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Global optimum: 11101111101000110100001111111001101001111011010101011100111110101000100
+                00110001011111110100010101000101000000110011111001111110011011111111000
+                1101000011001010101110111000000010010011010101100001000111
+Fitness: 2
+Decoded: [1, 1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1,
+          1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1,
+          1, -1, 1, -1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1,
+          1, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, 1, -1,
+          -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, -1, -1, 1, 1,
+          -1, -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1,
+          1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1,
+          1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, 1,
+          -1, -1, 1, 1, -1, 1, -1, 1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, 1]
+
+ESF (NOV=200) minimization took 10.856 s
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_47_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+    \paragraph{NOV = 200, maximization}\label{nov-200-maximization}
+
+Computing the maximum of ESF of 20 variables (wherein we assume that
+each term of the ESF is 1), we obtain 19900.
+
+After running for almost 13 minutes, my SGA implementation didn't find
+the maximum, but it came sort of close. In fact, since it is evident
+that 000\ldots{}0 or 111\ldots{}1 will yield the optimum, we can
+determine that the solution found by SGA was off by 5 bits, or 2.5\% of
+the variables.
+
+(Full disclosure: I ran this at least 3 times with the parameters below.
+One run of it came as close as 3 bits away from optimality.)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{ga\PYZus{}opts} \PY{o}{=} \PY{p}{\PYZob{}}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{chromosome\PYZus{}length}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{200}\PY{p}{,} \PY{c}{\PYZsh{} nov = 200,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{crossover\PYZus{}probability}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mf}{0.4}\PY{p}{,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{population\PYZus{}size}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{60}\PY{p}{,}
+             \PY{l+s}{\PYZsq{}}\PY{l+s}{num\PYZus{}eras}\PY{l+s}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{1000}\PY{p}{,}
+         \PY{p}{\PYZcb{}}
+
+         \PY{n}{start} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{plot\PYZus{}ga}\PY{p}{(}\PY{n}{esf}\PY{p}{,} \PY{n}{esf\PYZus{}decoder}\PY{p}{,} \PY{n}{min\PYZus{}or\PYZus{}max}\PY{o}{=}\PY{n}{MAX}\PY{p}{,} \PY{n}{ga\PYZus{}opts}\PY{o}{=}\PY{n}{ga\PYZus{}opts}\PY{p}{,}
+                 \PY{n}{title}\PY{o}{=}\PY{l+s}{\PYZdq{}}\PY{l+s}{ESF (NOV=200) (maximization)}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{legend}\PY{o}{=}\PY{k}{False}\PY{p}{)}
+         \PY{n}{total} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{start}
+
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{ESF (NOV=200) maximization took \PYZob{}:.3f\PYZcb{} s (\PYZob{}:.2f\PYZcb{} m)}\PY{l+s}{\PYZdq{}}
+               \PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{total}\PY{p}{,} \PY{n}{total}\PY{o}{/}\PY{l+m+mi}{60}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Global optimum: 00000000000000000000000000000000100001000000000000000000000000001000100
+                00000000000000000000000000000000000000000000000000000000000000000000000
+                0000001000000000000000000000000000000000000000000000000000
+Fitness: 17950
+Decoded: [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+          -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]
+
+ESF (NOV=200) maximization took 775.941 s (12.93 m)
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{SGA_files/SGA_49_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+
+    % Add a bibliography block to the postdoc
+
+
+
+    \end{document}
